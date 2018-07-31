@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "쉽게 씌어진 word2vec"
+title:  "요런거구나 이해했다"
 date:   2017-08-16 21:07:00
 categories: machine learning, natural language processing
 tags: featured
