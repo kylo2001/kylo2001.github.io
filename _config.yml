@@ -10,8 +10,8 @@ description: > # this means to ignore newlines until "email:"
 
 email: ehdghks19@gmail.com
 
-permalink: pretty
-relative_permalinks: true
+# permalink: pretty
+# relative_permalinks: true
 
 #blog logo
 logo: "/assets/images/profile.jpg"
