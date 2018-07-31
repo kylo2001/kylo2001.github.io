@@ -1,0 +1,757 @@
+## 그래프
+
+현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현된다. 항공기 운항 경로를 예로 들면 "서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?"와 같은 질문이 있을 것이다. 이 질문에 대답하기 위해서는 객체(도시)간의 관계(항공기 운항 경로)에 대한 정보가 필요하다. 이런 문제를 풀기위해 사용되는 자료구조가 그래프(Graph)이다.
+
+
+
+#### 용어 설명
+
+그래프(Graph): 그래프는 정점(Vertices)이라고 불리는 노드들의 집합 V와 간선(edge)이라고 불리는 정점의 쌍들의 집합 E를 사용하여 (V, E)로 나타낸다. 
+
+정점과 간선은 위치 및 저장 요소이다.
+
+그래프에서 사용하는 정의:
+
+* 방향을 가진(유향) 간선(Directed edge):
+
+  * 순서를 가진 정점의 쌍 (u, v)으로 
+  * 첫 번째 정점 u는 출발점을 의미한다
+  * 두 번째 정점 v는 도착점을 의미한다
+  * 예, 편도(One-way) 운행
+
+  ![graph1](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph1.png)
+
+* 방향을 가지지 않은(무향) 간선(Undirected edge)
+
+  * 순서를 가지지 않는 정점의 쌍 (u, v)
+  * 예: 기찻길 
+
+  ![graph2](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph2.png)
+
+
+
+* 방향을 가지는 그래프(Directed graph)
+
+  * 그래프 내의 모든 간선들이 방향을 가집니다.
+  * 예: 네트워크 라우터
+
+  ![graph3](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph3.png)
+
+
+
+* 방향을 가지지 않는 그래프(Undirected graph)
+
+  * 그래프 내의 모든 간선이 방향을 가지지 않습니다.
+  * 예 비행 노선
+
+  ![graph4](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph4.png)
+
+
+
+* 두개의 정점이 간선으로 이어져 있을 때, 이어진 두 정점을 서로에게 인접(adjacent)해 있다고 하고, 이 간선을 두 정점의 관계 또는 사건(incident)이라고 한다.
+
+* 순환이 없는 그래프를 트리라고 부른다, 트리는 비순환(acyclic) 연결 그래프이다.
+
+  ![graph5](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph5.png)
+
+
+
+* 하나의 정점으로 이루어진 간선을 자기 순환(self loop)이라 합니다.
+
+  ![graph6](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph6.png)
+
+
+
+* 두 간선이 동일한 쌍의 정점을 가진다면 두 간선은 평행합니다.
+
+  ![graph7](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph7.png)
+
+
+
+* 정점의 차수는 정점에 존재하는 간선의 수입니다.
+
+* 부분 그래프(SubGraph)는 그래프를 구성하는 일부(SubSet) 간선(정점들을 연결하는)들로 구성된 그래프입니다.
+
+* 그래프에서 경로(Path)는 순차적인 인접(adjacent) 정점들입니다. 단순 경로(simple path)는 동일한 정점이 중복되어 나타나지 않는 경로입니다. 아래 그림에서 점선으로 표시된 G에서 E로의 경로는 단순 경로입니다.
+
+  ![graph8](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph8.png)
+
+
+
+* 어떤 경로의 첫 번째 정점과 마지막 정점이 동일한 것을 사이클(cycle)이라고 합니다(첫 번째와 마지막 정점을 제외하고). 반복되는 정점이나 사선이 없는 사이클을 단순 사이클(simple cycle)이라 합니다.
+
+  ![graph9](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph9.png)
+
+
+
+* 두 정점을 모두 포함하는 경로가 있다면 두 정점이 연결되었다고 합니다.
+
+* 모든 정점에서 다른 모든 정점으로의 경로가 존재한다면 연결 그래프입니다.
+
+* 연결 그래프가 아니라면 그래프는 연결 컴포넌트들의 집합으로 구성됩니다(컴포넌트 : 무향 그래프의 연결 컴포넌트는 두 개의 정점이 경로에 의해 서로 연결되어 있으면서 그외 부모 그래프의 어떤 정점과도 연결되어 있지 않은 부분 그래프입니다).
+
+  ![graph10](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph10.png)
+
+
+
+* DAG(Directed Acyclic Graph)는 사이클을 가지지 않는 유향 그래프를 말합니다.
+
+  ![graph11](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph11.png)
+
+
+
+* 포레스트(forest)는 서로 중복되지 않는 트리(순환이 없는 그래프)들의 집합입니다(트리를 분리한 집합).
+
+* 연결 그래프의 신장 트리(spanning tree)는 그래프의 모든 정점들을 포함하는 부분 그래프이며 단일 트리입니다.
+
+* 그래프의 신장 포레스트(spanning forest)란 신장 트리들의 집합입니다.
+
+* 이분(Bipartiie) 그래프는 모든 정점을 두 개의 집합으로 나누고 모든 간선들이 한쪽 집합에 있는 정점에서 다른 집합에 있는 정점으로 연결된 그래프입니다.
+
+  ![graph12](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph12.png)
+
+
+
+* 가중 그래프에서 가중치(weights)는 거리나 비용 등을 나타내기 위해 간선에 부여되는 값 또는 비용입니다.
+
+  ![graph13](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph13.png)
+
+
+
+* 주어진 그래프의 정점들의 수를 |V|로, 간선들의 수를 |E|로 나타낸다고 할 때, 각 정점이 다른 정점에 연결될 수 있기 때문에 |E| 값의 범위에서 0에서 |V|(|V|-1) / 2(무향 그래프 일때) 사이가 됩니다.
+
+* 상대적으로 적은 수(보통 간선의 수가 |V|log|V| 보다 적을 경우)의 간선을 가진 그래프를 희소 그래프(sparse graph)라고 합니다.
+
+* 상대적으로 많은 수의 간선을 가지는 그래프를 밀집 그래프(dense graph)라고 합니다.
+
+* 유향 가중 그래프(Directed Weighted graph)를 종종 네트워크(network)라고 합니다.
+
+* 가능한 모든 간선을 가지는 그래프를 완전 그래프(complete graph)라고 합니다.
+
+  ![graph14](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph14.png)
+
+
+
+#### 그래프 활용
+
+* 전자 회로에서 컴포넌트 간의 관계를 나타내는데 사용합니다
+* 운송 네트워크: 고속 도로망, 비행 노선
+* 컴퓨터 네트워크: 근거리 통신망, 인터넷, 웹
+* 데이터베이스: 데이터베이스의 객체 관계도(ERD: Entity Relationship Diagrams)를 표시, 데이터베이스 내 테이블들의 종속을 표시
+
+
+
+#### 그래프의 표현
+
+다른 추상 데이터 형들과 마찬가지로, 그래프를 다루기 위해서는 그랲를 유용한 형태로 표현해야합니다. 기본적으로 이를 위한 방법은 다음 세 가지 입니다.
+
+* 인접 매트릭스(Adjacency Matrix)
+* 인접 리스트(Adjacency List)
+* 인접 셋(Adjacency Set)
+
+
+
+#### 인접 매트릭스(Adjacency Matrix)
+
+
+
+##### 인접 매트릭스로 표현된 그래프 선언
+
+먼저 그래프의 자료 구조를 살펴보겠습니다. 그래프를 표현하기 위해서는 정점의 수와 간선의 수 그리고 그들의 상호 연결 정보가 필요합니다. 따라서 그래프는 다음과 같이 선언할 수 있습니다.
+
+```
+struct Graph {
+    int V;
+    int E;
+    int **Adj; // 2차원 매트릭스가 필요하기 때문에 이중 포인터를 사용
+};
+```
+
+
+
+##### 설명
+
+이 방법에서는 V * V 크기를 가진 매트릭스를 사용합니다. 매트릭스 내 값은 1(참)과 0(거짓)으로 표현합니다. 이제 매트릭스를 Adj라고 가정합시다. 정점 u에서 v사이에 간선이 존재한다면 1로 설정하고 그렇지 않다면 0으로 설정합니다.
+
+무향 그래프에서 각 간선은 매트릭스 내 두 군데에 표시하게 됩니다. 즉, 정점 u와 v사이 간선은 Adj[u, v]와 Adj[v, u]모두를 1로 표현하게 됩니다. 시간을 절약하기 위해 대칭 매트릭스(symmetric matrix)의 절반만을 처리하도록 할 수도 있습니다. 또한 각 정점에서 자신으로의 연결된 간선(자기 순환)이 존재한다고 가정합니다. 따라서, 모든 정점에 대해 Adj[u, u]를 1로 세팅합니다(자기 순환이 있고 없고에 대해서 가정하는 것은 사용자에 따라 다를 수 있습니다).
+
+유향 그래프에서는 인접 매트릭스 내 하나의 항목만 표시합니다. 예를 들어 다음과 같은 유향 그래프를 생각해봅시다.
+
+![graph15](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph15.png)
+
+
+
+위 그래프는 다음과 같은 인접 매트릭스로 표현할 수 있습니다.
+
+![graph16](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph16.png)
+
+
+
+이제 구현을 생각해 봅시다. 그래프를 읽기 위한 방법은 먼저 정점들을 읽은 후 장점들의 쌍(간선)을 읽는 것입니다. 아래 코드는 무향 그래프를 읽는 코드입니다.
+
+
+
+```
+//이것은 adj 매트릭스를 이용해서 그래프를 생성하는 코드입니다.
+struct Graph *adjMatrixOfGraph() {
+    int i, u, v;
+    struct Graph *G = (Struct Graph*)malloc(sizeof(struct Graph));
+    if(!G) {
+        printf("Memory Error");;
+        return;
+    }
+    scanf("Number of Vertices : %d, Number of Edges : %d", &G -> V, &G -> E);
+    G -> Adj = malloc(sizeof(G -> V*G -> V));
+    for(u = 0; i < G -> V; v++) 
+    	for(v = 0; v < G -> V; v++)
+    	G -> Adj[v][v] = 0;
+    for(i = 0;i < G -> E; i++) {
+        //간선을 읽습니다.
+        scanf("Reading Edge : %d", &u, &v);
+        //무향 그래프이므로 두 경우 모두 1로 결정
+        G -> Adj[u][v] = 1
+        G -> Adj[v][u] = 1
+    }
+    return G;
+}
+```
+
+ 인접 매트릭스를 이용한 표현은 밀집 그래프에서 효과적입니다. 매트릭스는 O(V^2) 비트의 저장 공간이 필요하고 초기화에 O(V^2)시간이 필요합니다. 간선의 수가 V^2에 비례한다면 간선을 읽는데 V^2번의 반복을 수행하는 것이 문제가 되지 않습니다. 희소 그래프에서도 매트릭스를 초기화하는데 V^2의 비용이 필요한데, 이는 알고리즘 실행 시간의 대부분을 차지하게 될 것입니다.
+
+
+
+#### 인접 리스트(Adjacency List)
+
+
+
+##### 인접 리스트용 그래프 선언
+
+이 표현 방법에서는 정점 v에 연결된 모든 정점들이 정점 v에 대한 인접 리스트에 저장됩니다. 각 정점의 인접 리스트는 연결 리스트를 가지고 간단히 구현할 수 있습니다. 즉, 각 정점 v에 대핸 연결 리스트를 할당하고 이 연결 리스트의 노드에 정점 v에 연결된 다른 정점들을 저장합니다. 이것이 각 정점 v에 대한 간선ㄷ르의 목록입니다.
+
+```
+struct Graph {
+    int V;
+    int E;
+    int *Adj // 연결 리스트의 head
+}
+```
+
+
+
+##### 설명
+
+인접 행렬의 예를 인접 리스트로 표현하면 아래와 같습니다.
+
+![graph17](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph17.png)
+
+
+
+정점 A가 B와 D로의 간선을 가지므로 이들을 정점 A의 인접 리스트에 추가합니다. 다른 정점들도 동일하게 처리합니다.
+
+```
+// 연결 리스트의 노드
+struct ListNode {
+    int vertexNumber;
+    struct ListNode *next;
+}
+// 이 코드는 확장된 리스트를 사용하여 그래프를 생성합니다.
+struct Graph *adjListOfGraph() {
+    int i, x, y;
+    struct ListNode *temp;
+    struct Graph *G = (struct Graph *)malloc(sizeof(struct Graph));
+    if(!G) {
+        print("Memory Error");
+        return;
+    }
+    scanf("Number of Vertices : %d, Number of Edges : %d", &G -> V, &G -> E);
+    G -> Adj = malloc(G -> V * sizeof(struct ListNode));
+    for(i = 0; i < G -> V; i++) {
+    	G -> Adj[i] = (strcut ListNode *)malloc(sizeof(struct ListNode));
+    	G -> Adj[i] -> vertexNumber = i;
+    	G -> Adj[i] -> next = G -> Adj[i];
+    }
+    for(i = 0;i < E; i++) {
+        //간선을 읽습니다.
+        scanf("Reading Edge : %d %d", &x, &y);
+        
+		temp = (strcut ListNode *)malloc(sizeof(struct ListNode));
+		temp -> vertexNumber = y; // 오탄가..?? y -> x되어야할 것 같은 느낌
+		temp -> next = G -> Adj[x];
+        G -> Adj[x] -> next = temp;
+        
+        temp = (strcut ListNode *)malloc(sizeof(struct ListNode));
+        temp -> vertexNumber = y;
+		temp -> next = G -> Adj[y];
+		G -> Adj[y] -> next = temp;
+    }
+    return G;
+}
+```
+
+
+
+이 표현 방법은 간선의 입력 순서가 중요합니다. 인접 리스트에 존재하는 정점들의 순서를 결정하기 때문입니다. 인접 리스트 표현 방식에서는 동일한 그래프라 하더라도 여러 가지 다른 방법으로 표현될 수 있습니다. 인접 리스트에 나타나는 간선의 순서는 알고리즘에 의해 처리되는 간선의 순서에 영향을 미칩니다.
+
+
+
+##### 인접 리스트의 단점
+
+인접 리스트 표현을 사용하면 몇몇 연산을 효과적으로 수행할 수 없습니다. 예를 들어 노드를 삭제하는 경우를 생각해 보겠습니다. 인접 리스트 표현에서는 인접 리스트에서 해당 노드를 삭제하면 그만이지만 삭제된 노드에 해당하는 정점에서도 반대편 정점을 인접리스트에 노드로 정의하고 있을 수 있습니다. 따라서 이 노드도 찾아 삭제하는 과정이 필요합니다. 이 문제는 특정 간선에 해당하는 두 리스트 노드를 연결하고 인접 리스트를 이중 연결리스트로 만들어 풀 수 있습니다. 하지만 이런 추가적인 연결은 언제나 처리의 위험성을 초래합니다.
+
+
+
+#### 인접 셋(Adjacency Set)
+
+
+
+이 방법은 연결 리스트 대신에 분리 집합[Disjoint Set, UNION FIND]을 ㅏ용하는 것을 제외하면 인접 리스트와 매우 유사합니다. 
+
+
+
+##### 그래프 표현 방법 비교
+
+유방향 그래프와 무방향 그래프는 동일한 구조로 표현됩니다. 무방향 그래프는 x에서 y로의 간선이 인접 매트릭스  `Adj[x][y]`에 값 1로 표현되거나 x의 인접 리스트에 y를 추가하는 것 같이 간선의 표현이 한 번만 표시된다는 것을 제외하면 유방향 그래프와 모든 것이 동일합니다. 가중(weighted) 그래프도 인접 매트릭스에 0 또는 1값이 아닌 간선의 가중치 값을 채우는 것을 제외하고는 모든 것이 동일합니다.
+
+![graph18](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph18.png)
+
+
+
+#### 그래프 운행(Graph Traversals)
+
+그래프 문제를 풀기 위해서는 그래프 운행을 위한 매커니즘이 필요합니다. 그래프 운행 알고리즘들을 그래프 탐색(graph search)알고리즘이라고 부릅니다. 트리 운행 알고리즘(중위, 전위, 후위 그리고 레벨순 운행)처럼 그래프 탐색 알고리즘은 그래프의 특정 정점에서 시작하며 간선을 통하여 그래프를 탐색하고 탐색한 정점에 표시합니다. 이제 그래프 운행과 관련된 두 가지 알고리즘에 대해 알아보겠습니다.
+
+* 깊이 우선 탐색(Depth First Search, DFS)
+* 넓이 우선 탐색(Breadth First Search, BFS)
+
+
+
+##### 깊이 우선 탐색(Depth First Search, DFS)
+
+DFS 알고리즘은 트리의 전위 운행과 유사합니다. 이 알고리즘은 전위 운행처럼 내부적으로 스택을 사용합니다. 다음과 같은 예를 들어보겠습니다. 한 사람이 미로에 갖혀 있습니다. 미로에서 나오기 위해 이 사람은 최악의 경우 미로의 모든 경로와 교차로를 지나야 합니다. 이 사람이 두 가지 색상의 페인트를 가지고 있는데 이 페인트를 이용해서 이미 지나간 모든 교차로에 표시를 한다고 가정해봅시다. 교차로에 처음 도착하면 회색으로 색을 칠하고 더 깊게 들어갑니다. 막다른 길에 도착하면 회색으로 칠한 교차로에 더 이상 탐색할 곳이 없다는 것을 알게 되고 이 교차로를 다시 검은색으로 표시합니다. 이 과정에서 회색 혹은 검은색으로 표시된 교차로거나 교차로와 연결되지 않은 단순한 경로를 막다른 골목으로 봅니다.
+
+미로의 교차로는 그래프에서 정점이고 교차로롸 교차로 사이에 있는 경로는 그래프에서의 간선입니다. 막다른 골목을 만나 되돌아 오는 과정을 역추적(backtracking)이라고 합니다. DFS는 이전에 회색으로 칠한 정점으로 역추적을 수행할 때까지 시작 정점에서 가능한 멀고 깊게 이동합니다. DFS 알고리즘에서는 아래와 같은 간선의 유형이 존재합니다. 
+
+* 트리 간선(Tree edge) : 새로운 정점을 만납니다.
+* 후진 간선(Back Edge) : 후손(시작점에서 먼 것의 정점)에서 조장(시작점에서 가까운 정점)으로 이동합니다.
+* 전진 간선(Forward edge) : 조상에서 후손으로 이동합니다.
+* 횡단 간선(Cross edge) : 그래프를 구성하는 트리 혹은 하위 트리 사이를 이동합니다.
+
+몇몇 문제들은 구분 값이 3개가 필요하지만 대부분의 알고리즘에서 방문/미방문의 식별은 불린(Boolean)값(2가지 구분 값)으로 충분합니다.
+
+
+
+False -> 방문하지 않은 정점
+
+True -> 방문한 정점
+
+
+
+초기에는 모든 정점들이 바운 하지 않은 (false)정점으로 표시됩니다. DFS알고리즘은 항상 그래프 내 어떤 정점 u에서 시작합니다. 정점 u에서 시작하여 다른 정점으로의 간선을 찾습니다. 간선이 이미 방문한 정점에 대한 연결이면, 다시 시작했던 정점 u로 돌아옵니다. 즉, 방문한 새로운 정점이 다시 시작 정점이 되고 새로운 정점에서 더 이상 탐색할 간선이 없으면 이전의 정점으로 되돌아 갑니다. 이 과정을 막다른 길에 다다를 때까지 반복합니다. 막다른 길에 도착하면 역추적을 시작합니다. 이 역추적이 다시 시작 정점에 이르게 되면 그래프의 운행이 끝납니다. 이 방법에 기반한 알고리즘은 아래와 같습니다.
+
+```
+// Vistied[]는 전역변수입니다.
+int Visited[G -> V];
+void DFS(struct Graph *G, int u) {
+    Visited[u] = 1;
+    for(int v = 0; v < G -> V; v++) {
+        /* 
+        예를 들어 그래프를 인접 매트릭스로 표현했다면, 
+        u에서 방문하지 않은 인접 정점을 찾는데 사용되는 조건은 
+        if(!Visited[v] && G -> Adj[u][v]) 입니다.
+        */
+        for eaah 정점 u에서 방문하지 않은 인접 정점 v {
+            DFS(v);
+        }
+    }
+}
+void DFSTraversal() {
+    for(int i = 0; i < G -> V; i++) {
+        Visited[i] = 0;
+    }
+    
+    //그래프가 하나 이상의 컴포넌트를 가진다면 아래 루프가 필요합니다.
+    for(int i = 0; i < G -> V; i++) {
+        if(!Visited[i])
+    }
+    DFS(G, i);
+}
+```
+
+다음 그래프로 예를 들어 보겠습니다. 탐색을 하다 보면 때때로 간선이 이미 방문했던 정점에 이어지는 경우가 생깁니다. 이러한 간선을 후진 간선(Back edge)라고 부르는데, 그래프에서 트리를 만들 뗴 이런 후진 간선들을 제외하기 때문에 후진 간선들을 제외한 다른 간선들을 트리 간선(Tree edge)이라고 부릅니다.
+
+최종 생성된 트리를 DFS 트리라고 부르며 처리된 정점들의 순서를 DFS 정점들의 순서라고 부릅니다. 아래 그림에서 이미 방문한 정점들은 회색으로 색칠하여 표시합니다(다른 구분 값이 존재하지 않습니다). 방문한 정점들을 기록하는 테이블이 갱신되는 과정을 잘 지켜 보십시오.
+
+
+
+![graph19](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph19.png)
+
+![graph20](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph20.png)
+
+![graph21](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph21.png)
+
+![graph22](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph22.png)
+
+![graph23](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph23.png)
+
+
+
+위 다이어그램에서 DFS 운행이 트리(후진 간선이 없는)를 만들어 내는 것을 볼 수 있는데, 이 트리를 DFS트리라고 합니다. 위 알고리즘은 주어진 그래프가 연결 컴포넌트를 가지고 있어도 잘 작동합니다.
+
+인접 리스트로 그래프를 표현할 때, 하나의 정점에서 시작하여 시작 정점의 방문하지 않은 정점의 인접 노드들만 처리하므로 DFS으 시간 복잡도는 O(V + E)입니다. 반면, 인접 매트릭스를 사용한다면 한 정점에 대한 모든 인접 간선을 효율적으로 찾을 수 없기 때문에 O(V^2)입니다.
+
+###### DFS의 응용
+
+* ###### 위상 정령(Topological Sorting)
+
+* ###### 연결 컴포넌트(connected components) 찾기
+
+* ###### 그래프의 관절점(Articulation Points - cut vertices) 찾기
+
+* ###### 강력한 연결 컴포넌트(stringly connected components) 찾기
+
+* ###### 미로와 같은 퍼즐 풀기
+
+
+
+##### 넓이 우선 탐색(Breadth First Search, BFS)
+
+BFS 알고리즘은 트리의 레벨 순 운행(level-order traversal)과 유사하게 동작합니다. 레벨 순 운행과 같이 BFS는 큐를 이용합니다. 사실 레벨 순 운행은 BFS에서 영감을 받은 것입니다. BFS는 처음에 레벨 0에 있는 한 정점에서 시작합니다. 첫 번째 단계에서 레벨 1의 모든 정점(즉, 그래프의 시작 정점에서 거리가 1인 정점)들을 방문합니다. 두 번째 단계에서 두 번째 레벨으 모든 정점들을 방문합니다. 이 새로운 정점들이 레벨 1에 속한 정점들의 인접 정점들입니다. BFS 는 이 절차를 그래프의 모든 레벨들의 처리가 완료될 때까지 계속합니다. 일반적으로 큐는 한 레벨의 정점들을 저장하는데 사용합니다. DFS와 유사하게 초기에 모든 정점들은 방문하지 않은 것(false)으로 표시합니다. 처리되고 큐에서 제거된 정점들은 방문한 것(true)으로 표시됩니다. 큐를 사용하는 이유는 처음 정점들을 방문하는 순서를 유지하기 위한 것입니다.
+
+지금까지의 설명을 구현하면 다음과 같습니다.
+
+```
+void BFS(struct Graph *G, int u) {
+    int v;
+    struct Queue *Q = CreateQueue();
+    EnQueue(Q, u);
+    while(!IsEmptyQueue(Q)) {
+        u = DeQueue(Q);
+        Procss u; // 예를 들어 Visited[s] = 1을 출력한다던지 하는 처리 작업
+        /* 
+        예를 들어 인접 매트릭스로 그래프를 표시한다면 점점 방문하지 않은 u의 인접 정점들을 
+        찾는데 사용되는 조건은 if(!Visited[v] && G -> Adj[u][v])입니다. 
+        */
+        for each unvisited adjacent node v of u {
+            EnQueue(Q, v);
+        }
+    }
+}
+void BFSTraversal(struct Graph *G) {
+    for(int i = 0; i < G -> V; i++) {
+        Visited[i] = 0;
+    }
+    
+    //그래프가 하나 이상의 컴포넌트를 가질 떄 아래 반복문이 필요합니다.
+    for(int i = 0; i < G -> V; i++) {
+        if(!Visited[i]);
+    }
+    BFS(G, i);
+}
+```
+
+
+
+DFS의 예와 동일한 예를 생각해 봅시다. BFS 운행은 다음과 같습니다.
+
+
+
+![graph24](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph24.png)
+
+![graph25](/Users/kimdonghwan/Documents/공부/전공/My Blog/알고리즘/Graph/Images/graph25.png)
+
+
+
+인접 리스트로 그래프를 표현할 경우 BFS의 시간 복잡도는 O(V + E)이며 인접 매트릭스로 표현한다면 O(V^2)입니다.
+
+###### BFS의 응용
+
+* ###### 그래프에서 모든 연결 컴토넌트 찾기
+
+* ###### 하나의 연결 컴포넌트 내 모든 노드 찾기
+
+* ###### 두 노드 간의 가장 짧은 경로 찾기
+
+
+
+##### DFS와 BFS의 비교
+
+BFS 와 DFS를 비교하면 DFS의 가장 큰 장점은 BFS보다 메모리를 조금 사용한다는 것입니다. DFS는 각 레벨에서 모든 자녀들에 대한 포인터를 저장할 필요가 없기 때문입니다. 무엇을 찾는 것인가와 그 데이터에 따라 DFS 혹은 BFS가 유용할 수 있습니다. 예를 들어 갖고 트리에서 아직 생존해 있는 사람을 찾는데 그 사람이 트리의 제일 아래 위치한다고 가정한다면, DFS가 좋은 선택이 될 것입니다. BFS는 마지막 레벨까지 도달하는데 많은 시간이 걸릴 것입니다. DFS 알고리즘은 보다 빨리 목표를 찾을 수 있습니다. 오래 전에 사망한 사람을 찾는데 이런 사람들이 트리의 꼭대기쪽에 위차한다면 DFS보다 BFS가 더 빨리 찾을 수 있습니다. 따라서 두 알고리즘의 장점은 찾고자 하는 데이터에 따라 달라집니다.
+
+DFS는 트리의 전위 운행과 관련이 있습니다. 전위 운행과 마찬가지로 DFS는 각 노드를 각 노드의 자녀 노드보다 먼저 방문합니다. BFS 알고리즘은 트리의 레벨 순 운행과 유사하게 동작합니다. 만일 누군가가 DFS가 좋은지 BFS가 좋은지 여부를 물어본다면 답은 문제가 무엇인가에 달렸습니다. BFS는 한번에 한 레벨을 방문하는데 만일 찾는 값이 꼭대기에 레벨 쪽에 위치하고 있다는 것을 알고 있다면 BFS가 좋은 방법입니다. 그렇지 않고 바닥 레벨 쪽에 위치하고 있다면 DFS가 더 좋은 선택입니다.
+
+
+
+**<< 알고리즘 풀이 >>**
+
+
+
+1. 2178 미로탐색
+
+```
+#include<cstdio>
+#include<iostream>
+#include<queue>
+using namespace std;
+
+int n;  //row
+int m;  //column
+
+bool maze[100][100];  // true: 갈 수 있는 길, false: 막힌 길 , boolean 값 자체가 true면 1, false면 0의 값을 갖는다.
+int check[100][100]; // 지나온길 기록
+int direction[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}}; // down, up, right, left check.
+
+//input
+void In() {
+    cin >> n >> m;
+    
+    // 입력되는 데이터로 2차원 행렬 만든다.
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m ;j++) {
+            int b;
+            
+//            1234125
+//            1260729
+//            1346868
+//
+//            이런식으로 정수가 띄어쓰기 없이 입력받을때 cin으로 입력이 어렵다.
+//
+//            이때 scanf(“%1d”,&num)처럼 %1d를 사용하면 붙어있어도 한번에 한개씩 입력 받을 수 있다.
+//
+//            귀찮게 char배열로 입력받아서 변환 시켜줄 필요가 없어서 좋다.
+            
+            scanf("%1d", &b);
+            if(b == 1){
+                maze[i][j] = true;
+            }
+        }
+    }
+}
+
+//output
+void Out(int num) {
+    cout << num << endl;
+}
+
+// 입력된 n * m을 벋어나는지 확인한다.
+bool isInside(int a, int b) {
+    return (a >= 0 && a < n) && (b >= 0 && b < m);
+}
+
+
+int bfs() {
+    int current_y = 0, current_x = 0;   //current y, x
+    
+    queue<pair<int, int>> q;
+    q.push(pair<int, int>(current_x, current_y));
+    check[current_x][current_y] = 1;    //bfs가 지나가면서 몇번째만에 그 점에 접근했는지
+    
+    // 큐가 비었다는 것은 출구에 도착했거나 길이 없다라는 것이다.
+    while(!q.empty()){
+        
+        // 큐에 먼저 들어온 정점을 pop한다.
+        current_x = q.front().first;
+        current_y = q.front().second;
+        q.pop();
+        
+        if((current_x == n) && (current_y == m)) break; //도착지점
+        
+        // 현재 위치에서 상하좌우 위치에 있는 정점에 대해서 이동가능한지 검사하여 큐에 추가한다.
+        for(int i=0; i<4; i++){
+            //up, down, left, right !!
+            int next_x = current_x + direction[i][0];
+            int next_y = current_y + direction[i][1];
+            
+            //next y, x가 배열 내부에 있고, 방문한 적이 없고, map에 true로 되어있으면
+            if(isInside(next_x, next_y) && check[next_x][next_y] == 0 && maze[next_x][next_y]){
+                check[next_x][next_y] = check[current_x][current_y] + 1; // 이전 방문값 + 1 = 다음 방문
+                q.push(pair<int, int>(next_x, next_y)); //방문한 곳 push
+            }
+        }
+    }
+    
+    return check[n-1][m-1];
+}
+
+int main(void){
+    In();
+    Out(bfs());
+    return 0;
+}
+```
+
+
+
+2. 1697 숨바꼭질
+
+```
+#include<cstdio>
+#include <queue>
+#include <iostream>
+using namespace std;
+
+int n, k;          // 수빈이, 동생의 위치를 입력받기 위한 변수
+int map[100001];   // 방문한 위치에서의 흐른 시간을 알 수 있다.
+int check[100001]; // 방문확인을 위한 배열
+
+// 입력받은 위치를 가지고 현재 위치에 방문 표시를 하고 시간을 0으로 세팅한다.
+void in() {
+    scanf("%d %d", &n, &k);
+    map[n] = 0;
+    check[n] = 1;
+}
+
+// 매개변수 time 변수에 전달받은 값을 출력한다.
+void out(int time) {
+    if (time == -1) {
+        cout << "동생을 찾지 못했습니다.." << endl;
+    } else {
+        cout << time << endl;
+    }
+}
+
+// 문제에서 주어진 범위내에 위치하고 있는지 확인한다.
+bool isInside(int a) {
+    return ((a >= 0) && (a <= 100000));
+}
+
+// BFS 알고리즘을 활용하여 동생의 위치를 찾아낸다.
+int seek() {
+    queue<int> q;
+    int current; // 현재 수빈이의 위치
+    int next[3]; // 큐에 저장할 다음 위치들을 배열의 형태로 저장한다.
+    
+    q.push(n);
+    
+    while (!q.empty()) {
+        current = q.front(); // 큐의 제일 앞에 있는 데이터를 얻어온다.
+        q.pop();
+        
+        // 현재위치가 동생의 위치라면 동생을 찾아다고 간주하고 함수를 종료한다.
+        if (current == k) {
+            return map[current];
+        }
+        
+        next[0] = current - 1;
+        next[1] = current + 1;
+        next[2] = current * 2;
+        
+        for(int i = 0; i < 3; i++) {
+            // 범위에 속하는고, 방문하지 않은 점인지 검사
+            if(isInside(next[i]) && check[next[i]] == 0) {
+                q.push(next[i]);
+                check[next[i]] = 1;
+                map[next[i]] = map[current] + 1;
+            }
+        }
+    }
+    return -1;
+}
+
+int main(int argc, const char * argv[]) {
+    in();
+    out(seek());
+    return 0;
+}
+```
+
+
+
+3. 7576 토마토
+
+```
+#include <cstdio>
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int m;
+int n;
+
+int warehouse[1000][1000]; // 입력된 익은 토마토(1), 덜 익은 토마토(0), 벽??(-1)
+int check[1000][1000];     // 방문했는지에 대한 2차원 배열
+int direction[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}}; // 이동 가능방향 남, 북, 동, 서
+int immatureTomatoNum = 0; // 덜 익은 토마토의 개수를 카운트할 변수
+int matureDays = 0;        // 토마토가 숙성되는 날짜를 카운트하기 위한 변수
+queue<pair<int, int>> q;   // BFS 알고리즘을 위한 변수 queue
+
+// 입력된 익은 토마토(1), 덜 익은 토마토(0), 벽??(-1)에 맞춰서 입력받은 데이터를 분류하여 warehouse 및 check 배열을 채운다.
+void In() {
+    scanf("%d %d", &m, &n);
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m ;j++) {
+            int b;
+            cin >> b;
+            switch (b) {
+                case 0:
+                    immatureTomatoNum++;
+                    break;
+                case 1:
+                    warehouse[i][j] = 1;
+                    q.push(pair<int, int>(i, j));
+                    check[i][j] = 1;
+                    break;
+                case -1:
+                    warehouse[i][j] = -1;
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+void Out(int num) {
+    cout << num << endl;
+}
+
+// 범위 확인
+bool isInside(int a, int b) {
+    return (a >= 0 && a < n) && (b >= 0 && b < m);
+}
+
+// 조건에 따라서 알맞은 결과값은 리턴해준다.
+int getResult() {
+    if (immatureTomatoNum > 0) { return -1; }
+    else { return matureDays; }
+}
+
+int bfs() {
+    // 만약 덜 익은 토마토가 없었다면 0을 출력해준다.
+    if (immatureTomatoNum == 0) {
+        return 0;
+    }
+    
+    int current_x, current_y;
+    
+    while(!q.empty()){
+        
+        // 큐의 제일 앞에 있는 데이터를 현재 위치로 대입해준다.
+        current_x = q.front().first;
+        current_y = q.front().second;
+        q.pop();
+        
+        // 각 방향으로 이동할 수 있다면 큐에 저장한다.
+        for(int i=0; i<4; i++){
+            int next_x = current_x + direction[i][0];
+            int next_y = current_y + direction[i][1];
+            
+            if(isInside(next_x, next_y) && check[next_x][next_y] == 0 && warehouse[next_x][next_y] == 0){
+                check[next_x][next_y] = check[current_x][current_y] + 1;
+                q.push(pair<int, int>(next_x, next_y));
+                matureDays = check[next_x][next_y] - 1; // 데이터가 입력되는 순간 1일이 된다. 
+                immatureTomatoNum--; // 큐에 저장될 때마다 덜 익은 토마토의 개수를 1씩 감소 시킨다.
+            }
+        }
+    }
+    return getResult();
+}
+
+
+int main(int argc, const char * argv[]) {
+    In();
+    Out(bfs());
+    return 0;
+}
+```
