@@ -4,7 +4,7 @@ gems:
   - jekyll-paginate
 
 # Site settings
-title: "Data Storyteller"
+title: "iOS App Developer"
 description: > # this means to ignore newlines until "email:"
    꾸지의 개발 일기
 
@@ -49,7 +49,7 @@ social:
     share_link: "&amp;u="
 
   - icon: github
-    url:  https://github.com/dreamgonfly
+    url:  https://github.com/kylo2001
     desc: Fork me on github
     share_url:
     share_title:
