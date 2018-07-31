@@ -1,2 +1,2 @@
-# dreamgonfly.github.io
-dreamgonfly's blog
+# kylo2001.github.io
+꾸지의 개발 일기
