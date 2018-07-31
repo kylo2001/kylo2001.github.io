@@ -9,6 +9,10 @@ description: > # this means to ignore newlines until "email:"
    꾸지의 개발 일기
 
 email: ehdghks19@gmail.com
+
+permalink:           pretty
+relative_permalinks: true
+
 #blog logo
 logo: "/assets/images/profile.jpg"
 float_logo: false # true, false (default)
