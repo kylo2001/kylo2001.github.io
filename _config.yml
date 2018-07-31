@@ -6,11 +6,11 @@ gems:
 # Site settings
 title: "Data Storyteller"
 description: > # this means to ignore newlines until "email:"
-   Dreamgonfly's blog
+   꾸지의 개발 블로그
 
-email: dreamgonfly@gmail.com
+email: ehdghks19@gmail.com
 #blog logo
-logo: "/assets/images/dragonfly_moon.jpg"
+logo: "/assets/images/profile.jpg"
 float_logo: false # true, false (default)
 
 # blog cover
@@ -18,11 +18,11 @@ cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
 
 name: 'Dreamgonfly'
 author: 'Dreamgonfly'
-author_image: "/assets/images/dragonfly_moon.jpg"
+author_image: "/assets/images/profile.jpg"
 
 paginate:	5
 
-url: "https://dreamgonfly.github.io" # the base hostname & protocol for your site
+url: "https://kylo2001.github.io" # the base hostname & protocol for your site
 baseurl: ""
 #used to display twitter cards
 twitter_handle: '@dreamgonfly'
