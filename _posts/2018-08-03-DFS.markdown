@@ -35,17 +35,17 @@ comments: true
 
 **3. DFS 기타**  
 
-![DFS와 BFS의 진행 순서 (DFSandBFSflow)](https://user-images.githubusercontent.com/20294786/43650343-7ac85728-977a-11e8-8ac8-59c841c6e1af.png)
+![](https://user-images.githubusercontent.com/20294786/43650343-7ac85728-977a-11e8-8ac8-59c841c6e1af.png)
 
 
 
 ##### DFS 탐색 순서
 
-<img width="647" alt="dfs2" src="https://user-images.githubusercontent.com/20294786/43650459-caa80b1c-977a-11e8-8a19-b5d129254370.png">
+![](https://user-images.githubusercontent.com/20294786/43650459-caa80b1c-977a-11e8-8a19-b5d129254370.png)
 
 
 
-<img width="634" alt="dfs3" src="https://user-images.githubusercontent.com/20294786/43650489-dd224ab4-977a-11e8-848a-0e2c400ae9c9.png">
+![](https://user-images.githubusercontent.com/20294786/43650489-dd224ab4-977a-11e8-848a-0e2c400ae9c9.png)
 
 
 
