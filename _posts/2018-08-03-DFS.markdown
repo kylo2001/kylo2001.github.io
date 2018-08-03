@@ -142,7 +142,7 @@ int complexes[313];
 int apartments[25][25];
 bool check[25][25];
 
-int direction[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}}; // 남, 북, 동, 서
+int direction[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1} }; // 남, 북, 동, 서
 int n; // 지도의 크기
 
 void in() {
@@ -253,7 +253,7 @@ int n, m; // (n, m)    1<= n, m <= 50
 int cabbageField[50][50];
 bool check[50][50];
 
-int direction[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+int direction[4][2] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
 
 void in() {
     cin >> m >> n >> cabbageNumber;
