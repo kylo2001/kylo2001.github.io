@@ -158,13 +158,6 @@ void in() {
             }
         }
     }
-    
-//    for(int i = 0; i < n; i++) {
-//        for(int j = 0; j < n; j++) {
-//            cout << apartments[i][j];
-//        }
-//        cout << endl;
-//    }
 }
 
 // 움직일 수 있는 좌표가 주어진 배열내부에 존재하는가를 검사하기 위한 메소드
