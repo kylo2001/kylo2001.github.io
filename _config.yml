@@ -24,12 +24,10 @@ description_footer: ""
 
 # comments
 # two ways to comment, only choose one, and use your own short name
-disqus_shortname: kylo2001-github-io
-# disqus: kylo2001-github-io
+disqus: kylo2001-github-io
 
 # Statistic Analysis 
-# google_analytics_id: UA-124748625-1 # google analytics id
-
+google_analytics: UA-91026007-2
 
 # Build settings
 markdown: kramdown
