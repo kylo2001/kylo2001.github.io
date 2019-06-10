@@ -88,7 +88,7 @@ type: page
 
 ## E.T.C
 
-* [학과 공부](kylo2001.dothome.co.kr)
+* [학과 공부](http://kylo2001.dothome.co.kr)
 
   
 
