@@ -1,69 +1,55 @@
-# Build settings
-gems:
-  - jemoji
-  - jekyll-paginate
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: "iOS App Developer"
-description: > # this means to ignore newlines until "email:"
-   꾸지의 개발 일기
-
-email: ehdghks19@gmail.com
-
-# permalink: pretty
-# relative_permalinks: true
-
-#blog logo
-logo: "/assets/images/profile.jpg"
-float_logo: false # true, false (default)
-
-# blog cover
-cover: "/assets/images/backgroundImage1.jpg"
-
-name: '꾸지'
-author: '꾸지'
-author_image: "/assets/images/profile.jpg"
-
-paginate: 5
-
+title: Gidhub
+brief-intro: iOS App Developer
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kylo2001.github.io" # the base hostname & protocol for your site
-baseurl: ""
-#used to display twitter cards
-#twitter_handle: '@dreamgonfly'
+    
 
-#fill in disqus shortname to use disqus
-disqus: kylo2001-github-io
+permalink: /:title/
 
-google_analytics: UA-91026007-2
+# other links
+facebook_username: kylo2001
+github_username: kylo2001
+# email: kylo2001@gmail.com
+linkedIn_username: kylo2001
 
-# social icons and sharing options
-social:
-  - icon: twitter
-    url:  #https://twitter.com/dirkfabisch
-    desc: #Follow me on twitter
-    share_url: http://twitter.com/share
-    share_title: ?text=
-    share_link: "&amp;url="
+description_footer: ""
 
-  - icon: facebook
-    url:  #https://facebook.com/???
-    desc: #Connect with me facebook
-    share_url: https://www.facebook.com/sharer.php
-    share_title: ?t=
-    share_link: "&amp;u="
+# comments
+# two ways to comment, only choose one, and use your own short name
+disqus_shortname: kylo2001
 
-  - icon: github
-    url:  https://github.com/kylo2001
-    desc: Fork me on github
-    share_url:
-    share_title:
-    share_link:
+# Statistic Analysis 
+# google_analytics_id: UA-124748625-1 # google analytics id
 
-#  - icon:  google-plus
-#    url: https://google.com/???
-#    desc:  Add me on google+
-#    share_url:
-#    share_title:
-#    share_link:
-
+# Build settings
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+sass:
+  sass_dir:         _sass
+  style:            compressed
+
+# port
+# port: 1234
+
+# url
+category_dir: category/
+tag_dir: tag/
+
+# excerpt
+excerpt_separator: "\n\n\n\n"
+
+# paginate
+plugins: [jekyll-paginate]
+paginate: 6
