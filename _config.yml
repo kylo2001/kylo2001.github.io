@@ -24,7 +24,7 @@ description_footer: ""
 
 # comments
 # two ways to comment, only choose one, and use your own short name
-disqus: kylo2001-github-io
+disqus_shortname: kylo2001-github-io
 
 # Statistic Analysis 
 google_analytics: UA-91026007-2
