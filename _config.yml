@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Gidhub
+title: GGuJi
 brief-intro: iOS App Developer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kylo2001.github.io" # the base hostname & protocol for your site
@@ -17,8 +17,8 @@ permalink: /:title/
 # other links
 # facebook_username: kylo2001
 github_username: kylo2001
-# email: kylo2001@gmail.com
-linkedIn_username: kylo2001
+email: ehdghks19@gmail.com
+linkedIn_username: dong-hwan-kim-b4468910a
 
 description_footer: ""
 
