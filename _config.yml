@@ -15,7 +15,7 @@ url: "https://kylo2001.github.io" # the base hostname & protocol for your site
 permalink: /:title/
 
 # other links
-facebook_username: kylo2001
+# facebook_username: kylo2001
 github_username: kylo2001
 # email: kylo2001@gmail.com
 linkedIn_username: kylo2001
@@ -24,10 +24,12 @@ description_footer: ""
 
 # comments
 # two ways to comment, only choose one, and use your own short name
-disqus_shortname: kylo2001
+# disqus_shortname: kylo2001
+disqus: kylo2001-github-io
 
 # Statistic Analysis 
 # google_analytics_id: UA-124748625-1 # google analytics id
+
 
 # Build settings
 markdown: kramdown
