@@ -9,7 +9,8 @@ author: GGuJi
 
 
 
-[TOC]
+* content
+{:toc}
 
 ## Architecture 비교
 
