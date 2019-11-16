@@ -1,3 +1,4 @@
+---
 layout: post
 title:  "MVVM 학습 정리 초기 적용 내용"
 categories: Architecture
@@ -10,7 +11,6 @@ author: GGuJi
 
 * content
 {:toc}
-
 
 ## MVVM 학습 정리
 
