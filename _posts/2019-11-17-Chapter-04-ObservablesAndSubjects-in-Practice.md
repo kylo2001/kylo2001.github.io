@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  " Chapter 04 - Observables & Subjects in Practice "
+title:  " Chapter 04 - Observables And Subjects in Practice "
 categories: Reactive
 tags: RxSwift
 author: GGuJi
