@@ -10,9 +10,6 @@ author: GGuJi
 
 * content
 {:toc}
-
-# Chapter 05 - Filtering Operators
-
 ## Getting Started
 
 여기서 배울 것은 filtering operator로 이 것을 통해 `.next`이벤트를 통해 받아오는 값을 선택적으로 취할 수 있다.

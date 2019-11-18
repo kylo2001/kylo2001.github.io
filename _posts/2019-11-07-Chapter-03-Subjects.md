@@ -10,9 +10,6 @@ author: GGuJi
 
 * content
 {:toc}
-
-# Chapter 03 - Subjects
-
 Chapter 02 - Observable을 통해서 배운건 Observable이 무엇인지, 어떻게 만들고, 구독하고, dispose 하는지였다. 하지만 보통의 앱개발에서 필요한 것은 **실시간**으로 Observable에 새로운 값을 **수동으로 추가**하고 subscriber에게 방출하는 것 
 
 다시 말하면, *Observable*이자 *Observer*인 녀석이 필요하다. 이것을 **Subject**라고 부른다.

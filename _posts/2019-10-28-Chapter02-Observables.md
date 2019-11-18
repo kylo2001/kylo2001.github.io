@@ -10,9 +10,6 @@ author: GGuJi
 
 * content
 {:toc}
-
-# Chapter 02 - Observables
-
 ## Observable 이란?
 
 - Rx의 심장

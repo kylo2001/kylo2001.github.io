@@ -10,9 +10,6 @@ author: GGuJi
 
 * content
 {:toc}
-
-# Chapter 01 - Hello RxSwift
-
 ## RxSwift
 
 > RxSwift is a library for composing asynchronous and event-based code by using observable sequences and functional style operators, allowing for parameterized execution via schedulers.

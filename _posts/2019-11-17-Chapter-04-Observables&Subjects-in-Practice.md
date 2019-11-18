@@ -10,10 +10,6 @@ author: GGuJi
 
 * content
 {:toc}
-# Chapter 04 - Observables & Subjects in Practice
-
-
-
 ## ViewController에서 Variable 이용하기
 
 다음 코드를 **MainViewController.swift**의 `MainViewController` 내에 입력합니다.
