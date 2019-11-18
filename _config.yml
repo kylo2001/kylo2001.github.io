@@ -27,7 +27,7 @@ description_footer: ""
 disqus_shortname: kylo2001-github-io
 
 # Statistic Analysis 
-google_analytics: UA-152810988-1
+google_analytics_id: UA-152810988-1
 
 # Build settings
 markdown: kramdown
